@@ -1,6 +1,5 @@
 FROM pytorch/pytorch:2.1.2-cuda12.1-cudnn8-devel
 
-WORKDIR /workspace
 ARG DEBIAN_FRONTEND=noninteractive
 
 ENV CUDA_HOME=/usr/local/cuda \
@@ -33,8 +32,8 @@ ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 
 RUN cd GroundingDINO/ && python -m pip install .
 
-WORKDIR /workspace
-RUN mkdir weights ; cd weights ; wget -q https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth ; cd ..
+WORKDIR /workspace/GroundingDINO
+
 
 # ユーザー指定
 ARG UID
